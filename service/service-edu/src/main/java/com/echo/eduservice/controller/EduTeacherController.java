@@ -27,6 +27,7 @@ import java.util.List;
 @Api(description = "讲师管理")
 @RestController
 @RequestMapping("/teacher")
+@CrossOrigin
 public class EduTeacherController {
 
     private EduTeacherService teacherService;
@@ -46,6 +47,13 @@ public class EduTeacherController {
         }
         List<EduTeacher> list = teacherService.list(null);
         return Result.ok().data("teacherList", list);
+    }
+
+    @ApiOperation("根据讲师ID查询")
+    @GetMapping("/get/{id}")
+    public Result getTeacherById(@PathVariable("id") String id){
+        EduTeacher teacher = teacherService.getById(id);
+        return Result.ok().data("teacher",teacher);
     }
 
     @ApiOperation(value = "讲师列表-分页")
