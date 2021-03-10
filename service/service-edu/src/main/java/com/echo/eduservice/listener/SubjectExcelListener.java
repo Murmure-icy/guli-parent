@@ -39,7 +39,7 @@ public class SubjectExcelListener extends AnalysisEventListener<ExcelSubjectData
             subjectService.save(oneSubject);
         }
 
-        String parentId = oneSubject.getParentId();
+        String parentId = oneSubject.getId();
 
         EduSubject twoSubject = existTwoSubject(excelSubjectData.getTwoSubjectName(),parentId);
         if (twoSubject == null){

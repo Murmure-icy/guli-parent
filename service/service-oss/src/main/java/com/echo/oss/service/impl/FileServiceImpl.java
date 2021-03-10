@@ -55,6 +55,5 @@ public class FileServiceImpl implements FileService {
             e.printStackTrace();
             throw new GuliException(20001,"上传失败");
         }
-
     }
 }
