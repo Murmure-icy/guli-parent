@@ -40,11 +40,6 @@ public class EduTeacherController {
     @ApiOperation(value = "所有讲师列表")
     @GetMapping("/get/teachers")
     public Result list() {
-        try {
-            int i = 10 / 0;
-        } catch (Exception e) {
-            throw new GuliException(20001,"除数不能为0");
-        }
         List<EduTeacher> list = teacherService.list(null);
         return Result.ok().data("teacherList", list);
     }
