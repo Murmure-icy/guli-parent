@@ -60,15 +60,18 @@ public class EduCourse implements Serializable {
 
     @ApiModelProperty(value = "浏览数量")
     private Long viewCount;
-//    @Version
+
+    @Version
     @ApiModelProperty(value = "乐观锁")
+    @TableField(fill = FieldFill.INSERT)
     private Long version;
 
     @ApiModelProperty(value = "课程状态 Draft未发布  Normal已发布")
     private String status;
 
-//    @TableLogic
+    @TableLogic
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
+    @TableField(fill = FieldFill.INSERT)
     private Integer isDeleted;
 
     @ApiModelProperty(value = "创建时间")

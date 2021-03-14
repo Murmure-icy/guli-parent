@@ -1,8 +1,13 @@
 package com.echo.eduservice.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.echo.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.echo.eduservice.entity.vo.CoursePublishVo;
+import com.echo.eduservice.entity.vo.CourseQuery;
 import com.echo.eduservice.entity.vo.EduCourseInfo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,5 +19,17 @@ import com.echo.eduservice.entity.vo.EduCourseInfo;
  */
 public interface EduCourseService extends IService<EduCourse> {
 
-    void insertCourseInfo(EduCourseInfo courseInfo);
+    String insertCourseInfo(EduCourseInfo courseInfo);
+
+    EduCourseInfo getCourseById(String courseId);
+
+    void updateCourseInfo(EduCourseInfo courseInfo);
+
+    CoursePublishVo getCoursePublishInfo(String courseId);
+
+    void coursePublish(String courseId);
+
+    List<EduCourse> getAllCourses();
+
+    void pageQuery(Page<EduCourse> pageParam, CourseQuery courseQuery);
 }

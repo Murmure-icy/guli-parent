@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.echo.eduservice.mapper.EduCourseMapper">
+    <update id="coursePublish" parameterType="string">
+        UPDATE edu_course SET status = 'Normal' WHERE id = #{value}
+    </update>
 
+    <select id="getCoursePublishInfo" parameterType="string" resultType="com.echo.eduservice.entity.vo.CoursePublishVo">
+        SELECT ec.id,ec.title,ec.price,ec.`lesson_num`,ec.`cover`,et.`name` teacher_name,es1.`title` subject_level_one,es2.`title` subject_level_two
+        FROM edu_course ec
+                 INNER JOIN edu_teacher et ON ec.`teacher_id` = et.id
+                 INNER JOIN edu_subject es1 ON ec.`subject_parent_id` = es1.`id`
+                 INNER JOIN edu_subject es2 ON ec.`subject_id` = es2.`id`
+        WHERE ec.id = #{value};
+    </select>
 </mapper>
